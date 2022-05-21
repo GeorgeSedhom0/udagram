@@ -5,14 +5,13 @@ orbs:
   aws-s3: circleci/aws-s3@3.0.0
   eb: circleci/aws-elastic-beanstalk@1.0.0
 
-  workflows:
-  elastic-beanstalk-workflow:
 jobs:
   build:
     docker:
       - image: "cimg/base:stable"
     steps:
       - checkout
+      - eb/setup
       - aws-cli/setup
       - node/install:
           node-version: "16.14"
@@ -29,5 +28,7 @@ jobs:
           name: Back-End Build
           command: |
             cd udagram-api && npm install --legacy-peer-deps && npm run build && cd ..
-      - eb/deploy:
-        environment-name: udagram-api-dev
+      - run:
+          name: back-end deploy
+          command: |
+            eb deploy
