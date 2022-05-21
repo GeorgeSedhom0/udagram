@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Front-End Install
           command: |
-            cd udagram-frontend && npm i && npm run build && cd..
+            cd udagram-frontend && npm install && npm run build && cd..
       - run:
           name: Back-End Build
           command: |
