@@ -7,9 +7,11 @@ jobs:
     docker:
       - image: "cimg/base:stable"
     steps:
-      - node/install
-        node-version: 16.14
       - checkout
+      - node/install:
+          install-yarn: true
+          node-version: "16.14"
+      - run: node --version
       - run:
           name: Front-End Install
           command: |
