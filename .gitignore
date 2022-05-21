@@ -2,4 +2,3 @@ node_modules
 .env
 udagram-api/www
 udagram-frontend/www
-.elasticbeanstalk
