@@ -1,21 +1,27 @@
 version: 2.1
 orbs:
   node: circleci/node@5.0.2
-  aws-cli: circleci/aws-cli@1.3.1
+  aws-cli: circleci/aws-cli@3.1.1
+  aws-s3: circleci/aws-s3@3.0.0
 jobs:
   build:
     docker:
       - image: "cimg/base:stable"
     steps:
       - checkout
+      - aws-cli/setup
       - node/install:
           install-yarn: true
           node-version: "16.14"
       - run: node --version
       - run:
-          name: Front-End Install
+          name: Front-End Install and build
           command: |
             cd udagram-frontend && npm install --legacy-peer-deps && npm run build && cd ..
+      - run:
+          name: Front-End Deploy
+          command: |
+            cd udagram-frontend && npm run deploy && cd ..
       - run:
           name: Back-End Build
           command: |
