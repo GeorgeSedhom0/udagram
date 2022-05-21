@@ -27,5 +27,5 @@ jobs:
           name: Back-End Build
           command: |
             cd udagram-api && npm install --legacy-peer-deps && npm run build && cd ..
-      - eb/deploy:
-        environment-name: udagram-api-dev
+      # - eb/deploy:
+      #   environment-name: udagram-api-dev
