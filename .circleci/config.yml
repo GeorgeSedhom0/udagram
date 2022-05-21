@@ -15,8 +15,8 @@ jobs:
       - run:
           name: Front-End Install
           command: |
-            cd udagram-frontend && npm install --legacy-peer-deps && npm run build && cd..
+            cd udagram-frontend && npm install --legacy-peer-deps && npm run build && cd ..
       - run:
           name: Back-End Build
           command: |
-            cd udagram-api && npm i && npm run build && cd..
+            cd udagram-api && npm install --legacy-peer-deps && npm run build && cd ..
