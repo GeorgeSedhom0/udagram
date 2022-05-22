@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "Build-FrontEnd": "cd udagram-frontend && npm install --legacy-peer-deps && npm run build && cd ..",
+    "Build-Frontend": "cd udagram-frontend && npm install --legacy-peer-deps && npm run build && cd ..",
     "Deploy-Frontend": "cd udagram-frontend && npm run deploy && cd ..",
     "Build-Backend": "cd udagram-api && npm install --legacy-peer-deps && npm run build && cd ..",
     "Deploy-Backend": "cd udagram-api && eb deploy"
