@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@5.0.0
+  # request aws clis for the deploy commands
   aws-cli: circleci/aws-cli@2.0.6
   eb: circleci/aws-elastic-beanstalk@2.0.1
 jobs:
@@ -9,11 +10,15 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      # here starts the set for the requested cli that we'll use
       - aws-cli/setup
       - eb/setup
       - node/install:
+          # Select the needed node virsion
           node-version: "16.14"
-      - run: node --version
+      - run:
+          node --version
+          # next 4 steps to install dependencies then build the app
       - run:
           name: Front-End and build
           command: |
@@ -30,3 +35,6 @@ jobs:
           name: Back-End Deploy
           command: |
             npm run Deploy-Backend
+          filters:
+            branches:
+              only: master

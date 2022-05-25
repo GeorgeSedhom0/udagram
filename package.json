@@ -3,7 +3,8 @@
     "Build-Frontend": "cd udagram-frontend && npm install --legacy-peer-deps && npm run build && cd ..",
     "Deploy-Frontend": "cd udagram-frontend && npm run deploy && cd ..",
     "Build-Backend": "cd udagram-api && npm install --legacy-peer-deps && npm run build && cd ..",
-    "Deploy-Backend": "cd udagram-api && eb deploy"
+    "Deploy-Backend": "cd udagram-api && eb deploy",
+    "test": "cd udagram-api && npm run test && cd .. && cd udagram-frontend && npm run test"
   },
   "devDependencies": {}
 }
